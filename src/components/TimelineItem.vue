@@ -1,7 +1,12 @@
 <script setup>
 import BaseSelect from './BaseSelect.vue'
 
-const props = defineProps(['timelineItem'])
+const props = defineProps({
+  timelineItem: {
+    required: true,
+    type: Object
+  }
+})
 
 const hourLinkClasses = [
   'absolute -top-4 left-1/2 -translate-x-1/2 rounded px-2 font-mono text-lg',
@@ -16,7 +21,7 @@ const options = [
   { value: 3, label: 'Training' }
 ]
 
-const selectedActivityId = 2 
+const selectedActivityId = 2
 </script>
 
 <template>
