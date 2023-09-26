@@ -1,6 +1,8 @@
 <script setup>
 import { CheckCircleIcon } from '@heroicons/vue/24/solid'
 import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
+
+const navItems = ['timeline', 'activities', 'progress']
 </script>
 
 <template>
@@ -26,23 +28,14 @@ import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outli
 
   <nav class="sticky bottom-0 z-10 bg-white">
     <ul class="flex items-center justify-around border-t">
-      <li class="flex-1">
-        <a href="#timeLine" class="flex flex-col items-center p-2 text-xs capitalize">
-          <ClockIcon class="w-6 h-6" />
-          timeLine
+      <li v-for="page in navItems" :key="page" class="flex-1">
+        <a :href="`#${page}`" class="flex flex-col items-center p-2 text-xs capitalize">
+          <ClockIcon v-if="page === 'timeline'" class="w-6 h-6" />
+          <ListBulletIcon v-else-if="page === 'activities'" class="w-6 h-6" />
+          <ChartBarIcon v-else class="w-6 h-6" />
+
+          {{ page }}
         </a>
-      </li>
-      <li class="flex-1">
-        <a href="#activities" class="flex flex-col items-center p-2 text-xs capitalize">
-          <ListBulletIcon class="w-6 h-6" />
-          activities
-        </a>
-      </li>
-      <li class="flex-1">
-        <a href="#progress" class="flex flex-col items-center p-2 text-xs capitalize">
-          <ChartBarIcon class="w-6 h-6" />
-          progress</a
-        >
       </li>
     </ul>
   </nav>
