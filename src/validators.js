@@ -16,6 +16,18 @@ export function validateSelectOptions(options) {
   return options.every(isSelectOptionValid)
 }
 
+export function validateActivities(activities) {
+  return activities.every(isActivityValid)
+}
+
+export function isActivityValid(activity) {
+  return isNotEmptyString(activity)
+}
+
+function isNotEmptyString(value) {
+  return isString(value) && value.length > 0
+}
+
 export function validateTimelineItems(timelineItems) {
   return timelineItems.every(isTimelineItemValid)
 }
